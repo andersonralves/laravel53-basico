@@ -142,6 +142,8 @@ class ProdutoController extends Controller
 
         //77777
 
+        /*
+
         $prod = $this->product->where('number', 77777);
         $update = $prod->update([
             'name' => 'Update Teste 2',
@@ -156,5 +158,33 @@ class ProdutoController extends Controller
             return 'Falha ao alterar';
 
         dd($prod);
+        */
+
+        /*
+        $prod = $this->product->find(1);
+
+        $delete = $prod->delete();
+
+        if ( $delete )
+            return 'Excluido com sucesso';
+        else
+            return 'Falha ao deletar';
+        */
+
+        /*
+      $delete = $this->product->destroy(4);
+
+      if ( $delete )
+          return 'Excluido com sucesso';
+      else
+          return 'Falha ao deletar';
+        */
+
+        $delete = $this->product->where('number', 57846)->delete();
+
+        if ( $delete )
+            return 'Excluido com sucesso';
+        else
+            return 'Falha ao deletar';
     }
 }
