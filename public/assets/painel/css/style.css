@@ -1,0 +1,38 @@
+.title-pg {
+
+    font-size:  2em;
+
+    font-weight: 900;
+
+    text-transform: unset;
+}
+
+.edit {
+
+    background-color: #3724ce;
+}
+
+.delete {
+
+    background-color: #c13939;
+}
+
+.actions {
+
+    padding: 6px;
+
+    color: #fff;
+
+    font-size: 1em;
+
+    text-decoration: none;
+
+    margin: 0px 2px;
+}
+
+.actions:hover {
+
+    color: #fff;
+
+    text-decoration: none;
+}
