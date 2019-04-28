@@ -35,7 +35,9 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        $categories = [ 'eletronicos', 'moveis', 'limpeza', 'banho'];
+
+        return view('painel.products.create', compact('categories'));
     }
 
     /**
@@ -46,7 +48,12 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        // dd( $request->all() );
+        // dd( $request->only(['name', 'number']) );
+        // dd( $request->except(['_token']) );
+        // dd( $request->input('name') );
 
+        return 'CADASTRANDO';
     }
 
     /**

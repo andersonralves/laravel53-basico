@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="title-pg">Listagem dos Produtos</h1>
 
-    <a href="" class="btn btn-primary mb-2 mt-2"><i class="fa fa-plus"></i> Cadastrar</a>
+    <a href="{{ route('produtos.create') }}" class="btn btn-primary mb-2 mt-2"><i class="fa fa-plus"></i> Cadastrar</a>
 
     <table class="table">
         <thead class="thead-dark">
