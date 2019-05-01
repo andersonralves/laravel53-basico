@@ -11,6 +11,7 @@
                 <th>#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
+                <th scope="col">Status</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
@@ -20,6 +21,7 @@
                 <td scope="row">{{ $loop->iteration }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
+                <td>{{ $product->active == 1? 'Ativo' : 'Inativo' }}</td>
                 <td width="100px">
                     <a href="" class="edit actions">
                         <i class="fa fa-edit"></i>

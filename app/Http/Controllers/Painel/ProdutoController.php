@@ -48,6 +48,20 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
+        // Pega todos os dados do formulário
+        $dataForm = $request->all();
+
+        $dataForm['active'] = empty($dataForm['active'])? 0 : 1;
+
+        // Faz o insert
+        $insert = $this->product->create( $dataForm );
+
+        if ($insert) {
+            return redirect()->route('produtos.index');
+        } else {
+            return redirect()->route('produtos.create');
+        }
+
         // dd( $request->all() );
         // dd( $request->only(['name', 'number']) );
         // dd( $request->except(['_token']) );
