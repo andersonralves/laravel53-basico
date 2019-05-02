@@ -12,28 +12,33 @@
         </div>
     @endif
 
-    <form method="post" action="{{ route('produtos.store') }}">
+    @if( isset($product) )
+        <form method="post" action="{{ route('produtos.update', $product->id) }}">
+            {!! method_field('PUT') !!}
+    @else
+        <form method="post" action="{{ route('produtos.store') }}">
+    @endif
 
         {!! csrf_field() !!}
 
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
+                <input class="form-control" type="text" name="name" id="name" value="{{ $product->name or old('name') }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="number" class="col-sm-2 col-form-label">Número</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="number" id="number" value="{{ old('number') }}">
+                <input class="form-control" type="text" name="number" id="number" value="{{ $product->number or old('number') }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Descrição</label>
             <div class="col-sm-10">
-                <textarea class="form-control" name="description" id="description" cols="30" rows="2">{{ old('description') }}</textarea>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="2">{{ $product->description or old('description') }}</textarea>
             </div>
         </div>
 
@@ -41,7 +46,8 @@
             <label for="name" class="col-sm-2 col-form-label">Ativo?</label>
             <div class="col-sm-10">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" name="active" id="active">
+                    <input class="form-check-input" type="checkbox" value="1" name="active" id="active"
+                        @if( isset($product) && $product->active == 1 ) checked @endif>
                     <label class="form-check-label" for="active">
                         Sim
                     </label>
@@ -55,7 +61,11 @@
                 <select class="form-control" name="category" id="category">
                     <option value="">Escolha a categoria</option>
                     @foreach($categories as $category)
-                        <option value="{{ $category }}">{{ ucfirst($category) }}</option>
+                        <option value="{{ $category }}"
+                            @if( isset($product) && $product->category == $category)
+                                selected
+                            @endif
+                            >{{ ucfirst($category) }}</option>
                     @endforeach
                 </select>
             </div>

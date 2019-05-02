@@ -23,7 +23,7 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->active == 1? 'Ativo' : 'Inativo' }}</td>
                 <td width="100px">
-                    <a href="" class="edit actions">
+                    <a href="{{ route("produtos.edit", $product->id) }}" class="edit actions">
                         <i class="fa fa-edit"></i>
                     </a>
                     <a href="" class="delete actions">
