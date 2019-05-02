@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Painel\Product;
@@ -53,7 +54,22 @@ class ProdutoController extends Controller
 
         $dataForm['active'] = empty($dataForm['active'])? 0 : 1;
 
-        $this->validate($request, $this->product->rules);
+        //$this->validate($request, $this->product->rules);
+
+        $messages = [
+            'name.required' => "O campo Nome é obrigatório",
+            'number.required' => "O campo Número é obrigatório",
+            'number.numeric' => 'Apenas números'
+        ];
+
+        $validate = validator( $dataForm, $this->product->rules, $messages );
+
+        if ( $validate->fails() ) {
+            return redirect()
+                        ->route('produtos.create')
+                        ->withErrors($validate)
+                        ->withInput();
+        }
 
         // Faz o insert
         $insert = $this->product->create( $dataForm );
