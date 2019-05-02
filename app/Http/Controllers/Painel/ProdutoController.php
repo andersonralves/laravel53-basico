@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Http\Requests\Painel\ProductFormRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -47,7 +48,7 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
         // Pega todos os dados do formulário
         $dataForm = $request->all();
@@ -56,11 +57,13 @@ class ProdutoController extends Controller
 
         //$this->validate($request, $this->product->rules);
 
+        /*
         $messages = [
             'name.required' => "O campo Nome é obrigatório",
             'number.required' => "O campo Número é obrigatório",
             'number.numeric' => 'Apenas números'
         ];
+
 
         $validate = validator( $dataForm, $this->product->rules, $messages );
 
@@ -70,6 +73,7 @@ class ProdutoController extends Controller
                         ->withErrors($validate)
                         ->withInput();
         }
+        */
 
         // Faz o insert
         $insert = $this->product->create( $dataForm );
