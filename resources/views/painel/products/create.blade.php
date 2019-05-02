@@ -4,6 +4,14 @@
 
     <h1 class="title-pg">Gestão Produto</h1>
 
+    @if ( isset($errors) && count($errors) > 0 )
+        <div class="alert alert-danger">
+            @foreach( $errors->all() as $error )
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+    @endif
+
     <form method="post" action="{{ route('produtos.store') }}">
 
         {!! csrf_field() !!}
@@ -11,21 +19,21 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Nome</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="name" id="name">
+                <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="number" class="col-sm-2 col-form-label">Número</label>
             <div class="col-sm-10">
-                <input class="form-control" type="text" name="number" id="number">
+                <input class="form-control" type="text" name="number" id="number" value="{{ old('number') }}">
             </div>
         </div>
 
         <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Descrição</label>
             <div class="col-sm-10">
-                <textarea class="form-control" name="description" id="description" cols="30" rows="2"></textarea>
+                <textarea class="form-control" name="description" id="description" cols="30" rows="2">{{ old('description') }}</textarea>
             </div>
         </div>
 
