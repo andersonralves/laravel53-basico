@@ -22,16 +22,19 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->active == 1? 'Ativo' : 'Inativo' }}</td>
-                <td width="100px">
+                <td width="150px">
                     <a href="{{ route("produtos.edit", $product->id) }}" class="edit actions">
                         <i class="fa fa-edit"></i>
                     </a>
-                    <a href="" class="delete actions">
-                        <i class="fa fa-trash-alt"></i>
+                    <a href="{{ route("produtos.show", $product->id) }}" class="delete actions">
+                        <i class="fa fa-eye"></i>
                     </a>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
+
+    {!! $products->links('pagination') !!}
+
 @endsection
